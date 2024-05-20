@@ -1,39 +1,27 @@
 import React from 'react';
 import CartWidget from '../CartWidget/CartWidget';
+import { Flex, Box, Link } from '@chakra-ui/react'; 
 
 const NavBar = () => {
   return (
-    <nav style={styles.navbar}>
-      <div style={styles.logo}>LosSantos eCommerce</div>
-      <ul style={styles.navLinks}>
-        <li><a href="#home">Inicio</a></li>
-        <li><a href="#products">Productos</a></li>
-        <li><a href="#about">Nosotros</a></li>
-        <li><a href="#contact">Contacto</a></li>
-      </ul>
+    <Flex
+      as="nav"
+      align="center"
+      justify="space-between" 
+      padding="1rem"
+      backgroundColor="#FED7E2"
+      color="white"
+    >
+      <Box as="div" fontSize="1.5rem" fontWeight="bold">LosSantos eCommerce</Box>
+      <Flex as="ul" listStyleType="none" gap="1rem">
+        <li><Link href="#home">Inicio</Link></li>
+        <li><Link href="#products">Productos</Link></li>
+        <li><Link href="#about">Nosotros</Link></li>
+        <li><Link href="#contact">Contacto</Link></li>
+      </Flex>
       <CartWidget />
-    </nav>
+    </Flex>
   );
-};
-
-const styles = {
-  navbar: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '1rem',
-    backgroundColor: '#282c34',
-    color: 'white'
-  },
-  logo: {
-    fontSize: '1.5rem',
-    fontWeight: 'bold'
-  },
-  navLinks: {
-    listStyle: 'none',
-    display: 'flex',
-    gap: '1rem'
-  }
 };
 
 export default NavBar;

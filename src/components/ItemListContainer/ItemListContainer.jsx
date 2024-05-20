@@ -1,20 +1,18 @@
 import React from 'react';
+import { Flex, Box, Center } from '@chakra-ui/react'; 
 
 const ItemListContainer = ({ title }) => {
   return (
-    <div style={styles.container}>
-      <h1>{title}</h1>
-      <p>¡Bienvenidos a nuestra tienda! Navega por nuestro catálogo para descubrir productos increíbles.</p>
-
-    </div>
+    <Flex direction="column" alignItems="center" padding="2rem" backgroundColor="white"> {}
+      <Box color="#FF3366" fontSize="2xl">{title}</Box>
+      <Center>
+        <Box>¡Bienvenidos a nuestra tienda!</Box>
+      </Center>
+      <Center>
+        <Box>Navega por nuestro catálogo para descubrir productos increíbles.</Box>
+      </Center>
+    </Flex>
   );
-};
-
-const styles = {
-  container: {
-    padding: '2rem',
-    textAlign: 'center'
-  }
 };
 
 export default ItemListContainer;
