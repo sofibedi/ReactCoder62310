@@ -1,9 +1,9 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react'; 
+import { Box } from '@chakra-ui/react';
 
 const CartWidget = () => {
   return (
-    <Box cursor="pointer" color="#FF0000"> {}
+    <Box cursor="pointer" color="#FF0000">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
