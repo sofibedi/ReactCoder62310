@@ -1,33 +1,22 @@
-// src/components/ItemDetailContainer/ItemDetailContainer.jsx
-import React, { useEffect, useState } from 'react';
+// ItemDetailContainer.jsx
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemCount from '../ItemCount/ItemCount';
 import { Box, Image, Text, Heading, Flex, Button } from '@chakra-ui/react';
+import ItemCount from '../ItemCount/ItemCount';
+import { useProducts } from '../ProductsContext/ProductsContext'; // Usa el hook del contexto
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
+  const products = useProducts(); // Obtiene productos del contexto
   const [product, setProduct] = useState(null);
   const [addedQuantity, setAddedQuantity] = useState(0);
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({
-            id: id,
-            name: `Product ${id}`,
-            description: `Detailed description of Product ${id}`,
-            price: 100 + parseInt(id) * 50,
-            image: `https://via.placeholder.com/300/${id}0${id}0FF/FFFFFF?text=Product+${id}`,
-            stock: 10 + parseInt(id) * 5
-          });
-        }, 1000);
-      });
-      setProduct(response);
-    };
-
-    fetchProduct();
-  }, [id]);
+    if (products.length > 0) {
+      const selectedProduct = products.find((product) => product.id === parseInt(id));
+      setProduct(selectedProduct);
+    }
+  }, [id, products]);
 
   const handleAddToCart = (quantity) => {
     setAddedQuantity(quantity);
@@ -44,6 +33,7 @@ const ItemDetailContainer = () => {
           <Heading as="h1">{product.name}</Heading>
           <Text mt={2}>{product.description}</Text>
           <Text mt={2} fontSize="2xl" color="teal.500">${product.price}</Text>
+          <Text mt={2}>Stock: {product.stock}</Text>
           <ItemCount stock={product.stock} initial={1} onAdd={handleAddToCart} />
           {addedQuantity > 0 && (
             <Text mt={2} color="green.500">

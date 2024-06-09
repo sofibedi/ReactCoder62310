@@ -1,7 +1,7 @@
 import React from 'react';
+import { Flex, Box, Link as ChakraLink } from '@chakra-ui/react';
+import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
 import CartWidget from '../CartWidget/CartWidget';
-import { Flex, Box } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -9,25 +9,34 @@ const NavBar = () => {
       as="nav"
       align="center"
       justify="space-between"
-      padding="1rem"
-      backgroundColor="#FED7E2"
+      padding="1rem 2rem"
+      backgroundColor="#2C5282" // Cambiado a un color azul oscuro
       color="white"
+      boxShadow="md" // Añadir sombra para separar del contenido
     >
-      <Box as="div" fontSize="1.5rem" fontWeight="bold">
+      <Box as={Link} to="/" fontSize="1.5rem" fontWeight="bold" color="white">
         LosSantos eCommerce
       </Box>
-      <Flex as="ul" listStyleType="none" gap="1rem">
+      <Flex as="ul" listStyleType="none" gap="1rem" alignItems="center">
         <li>
-          <Link to="/">Inicio</Link>
+          <ChakraLink as={Link} to="/" _hover={{ color: "teal.200" }} fontWeight="bold">
+            Inicio
+          </ChakraLink>
         </li>
         <li>
-          <Link to="/ropa">Ropa</Link>
+          <ChakraLink as={Link} to="/ropa" _hover={{ color: "teal.200" }} fontWeight="bold">
+            Ropa
+          </ChakraLink>
         </li>
         <li>
-          <Link to="/electronica">Electrónica</Link>
+          <ChakraLink as={Link} to="/electronica" _hover={{ color: "teal.200" }} fontWeight="bold">
+            Electrónica
+          </ChakraLink>
         </li>
         <li>
-          <Link to="/libros">Libros</Link>
+          <ChakraLink as={Link} to="/libros" _hover={{ color: "teal.200" }} fontWeight="bold">
+            Libros
+          </ChakraLink>
         </li>
       </Flex>
       <CartWidget />
@@ -35,4 +44,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar; // Asegúrate de exportar el componente por defecto
+export default NavBar;

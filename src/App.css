@@ -1,9 +1,31 @@
-/* src/App.css */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Ensure full height and width for the root element and no horizontal scrolling */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  background-color: #f4f4f4; /* Adjust background color as needed */
+  font-family: Arial, sans-serif; /* Move font-family setting here */
+}
+
+#root {
+  height: 100%;
+}
+
+/* Adjust the main container styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Remove text-decoration for links and add hover effects */
 a {
   text-decoration: none;
   color: inherit;
@@ -11,10 +33,4 @@ a {
 
 a:hover {
   color: teal;
-}
-
-#root {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
 }
