@@ -1,46 +1,19 @@
 import React from 'react';
-import { Flex, Box, Link as ChakraLink } from '@chakra-ui/react';
-import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
-import CartWidget from '../CartWidget/CartWidget';
+import { Link } from 'react-router-dom';
+import { Box, Flex, Button, HStack } from '@chakra-ui/react';
 
 const NavBar = () => {
   return (
-    <Flex
-      as="nav"
-      align="center"
-      justify="space-between"
-      padding="1rem 2rem"
-      backgroundColor="#2C5282" // Cambiado a un color azul oscuro
-      color="white"
-      boxShadow="md" // Añadir sombra para separar del contenido
-    >
-      <Box as={Link} to="/" fontSize="1.5rem" fontWeight="bold" color="white">
-        LosSantos eCommerce
-      </Box>
-      <Flex as="ul" listStyleType="none" gap="1rem" alignItems="center">
-        <li>
-          <ChakraLink as={Link} to="/" _hover={{ color: "teal.200" }} fontWeight="bold">
-            Inicio
-          </ChakraLink>
-        </li>
-        <li>
-          <ChakraLink as={Link} to="/ropa" _hover={{ color: "teal.200" }} fontWeight="bold">
-            Ropa
-          </ChakraLink>
-        </li>
-        <li>
-          <ChakraLink as={Link} to="/electronica" _hover={{ color: "teal.200" }} fontWeight="bold">
-            Electrónica
-          </ChakraLink>
-        </li>
-        <li>
-          <ChakraLink as={Link} to="/libros" _hover={{ color: "teal.200" }} fontWeight="bold">
-            Libros
-          </ChakraLink>
-        </li>
+    <Box bg="teal.500" p={4} color="white">
+      <Flex justify="space-between" align="center">
+        <HStack spacing={4}>
+          <Button as={Link} to="/">Home</Button>
+          <Button as={Link} to="/category/ropa">Ropa</Button>
+          <Button as={Link} to="/category/electronica">Electrónica</Button>
+          <Button as={Link} to="/category/libros">Libros</Button>
+        </HStack>
       </Flex>
-      <CartWidget />
-    </Flex>
+    </Box>
   );
 };
 

@@ -1,4 +1,3 @@
-// src/components/ItemCount/ItemCount.jsx
 import React, { useState } from 'react';
 import { Box, Button, Input, Flex } from '@chakra-ui/react';
 

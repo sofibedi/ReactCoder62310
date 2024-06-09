@@ -1,16 +1,14 @@
-// ItemListContainer.jsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Image, Text, SimpleGrid, Heading, Flex, Button } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import { useProducts } from '../ProductsContext/ProductsContext'; // Usa el hook del contexto
+import { useProducts } from '../ProductsContext/ProductsContext';
 
 const ItemListContainer = () => {
   const { category } = useParams();
-  const products = useProducts(); // Obtiene productos del contexto
+  const products = useProducts();
 
-  // Filtrar productos según la categoría
-  const filteredProducts = category ? products.filter(product => product.category === category) : products;
+  const filteredProducts = products.filter(product => !category || product.category === category);
 
   return (
     <Box p={4}>
@@ -34,11 +32,6 @@ const ItemListContainer = () => {
                 <Text mt={2} color="teal.500">${product.price}</Text>
               </Box>
             </Link>
-            <Flex justify="center" mb={4}>
-              <Button colorScheme="teal" mt={2}>
-                <Link to={`/product/${product.id}`}>Ver Detalles</Link>
-              </Button>
-            </Flex>
           </Box>
         ))}
       </SimpleGrid>

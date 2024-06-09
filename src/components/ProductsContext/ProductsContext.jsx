@@ -1,15 +1,11 @@
-// ProductsContext.js
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// Crear contexto
 const ProductsContext = createContext();
 
-// Proveedor del contexto
 export const ProductsProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // Simular llamada API
     const fetchProducts = async () => {
       const response = await new Promise((resolve) => {
         setTimeout(() => {
@@ -84,5 +80,4 @@ export const ProductsProvider = ({ children }) => {
   );
 };
 
-// Hook personalizado para usar el contexto
 export const useProducts = () => useContext(ProductsContext);

@@ -1,11 +1,9 @@
-/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Ensure full height and width for the root element and no horizontal scrolling */
 html, body {
   height: 100%;
   width: 100%;
@@ -18,14 +16,12 @@ html, body {
   height: 100%;
 }
 
-/* Adjust the main container styling */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-/* Remove text-decoration for links and add hover effects */
 a {
   text-decoration: none;
   color: inherit;
