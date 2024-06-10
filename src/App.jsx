@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar.jsx';
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer.jsx";
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer.jsx';
-import Cart from './components/Cart/Cart.jsx'; // Importación por defecto
+import Cart from './components/Cart/Cart.jsx'; 
 import NotFound from './components/NotFound/NotFound.jsx';
 import { ProductsProvider } from './components/ProductsContext/ProductsContext';
 

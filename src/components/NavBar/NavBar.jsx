@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Flex, Button, HStack } from '@chakra-ui/react';
-import CartWidget from '../CartWidget/CartWidget'; // Corregido el import
+import CartWidget from '../CartWidget/CartWidget'; 
 
 const NavBar = () => {
   return (

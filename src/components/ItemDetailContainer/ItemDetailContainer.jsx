@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Image, Text, Heading, Flex, Button } from '@chakra-ui/react';
-import ItemCount from '../ItemCount/ItemCount'; // Asegúrate de tener la ruta correcta
+import ItemCount from '../ItemCount/ItemCount'; 
 import { useProducts } from '../ProductsContext/ProductsContext';
 
 const ItemDetailContainer = () => {
-  const { id } = useParams();  // Obtén el ID del producto de la URL
+  const { id } = useParams();  
   const [product, setProduct] = useState(null);
   const products = useProducts();
 

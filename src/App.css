@@ -7,9 +7,9 @@
 html, body {
   height: 100%;
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  background-color: #f4f4f4; /* Adjust background color as needed */
-  font-family: Arial, sans-serif; /* Move font-family setting here */
+  overflow-x: hidden; 
+  background-color: #f4f4f4; 
+  font-family: Arial, sans-serif; 
 }
 
 #root {

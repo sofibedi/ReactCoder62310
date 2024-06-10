@@ -41,7 +41,7 @@ const ItemCount = ({ product, stock, initial = 1 }) => {
         </Button>
       </Flex>
       <Button colorScheme="teal" onClick={handleAdd} disabled={stock === 0}>
-        Add to Cart
+        Agregar al Carrito
       </Button>
     </Flex>
   );
