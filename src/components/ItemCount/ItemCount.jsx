@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Box, Button, Input, Flex } from '@chakra-ui/react';
+import { useCart } from '../Cart/Cart'; 
 
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ product, stock, initial = 1 }) => {
   const [quantity, setQuantity] = useState(initial);
+  const { addToCart } = useCart();
 
   const handleIncrement = () => {
     if (quantity < stock) {
@@ -17,7 +19,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   const handleAdd = () => {
-    onAdd(quantity);
+    addToCart(product, quantity);
   };
 
   return (

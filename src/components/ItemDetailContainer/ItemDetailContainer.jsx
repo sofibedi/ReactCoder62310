@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Image, Text, Heading, Flex, Button } from '@chakra-ui/react';
-import ItemCount from '../ItemCount/ItemCount'; 
+import ItemCount from '../ItemCount/ItemCount'; // Asegúrate de tener la ruta correcta
 import { useProducts } from '../ProductsContext/ProductsContext';
 
 const ItemDetailContainer = () => {
-  const { id } = useParams();  
+  const { id } = useParams();  // Obtén el ID del producto de la URL
   const [product, setProduct] = useState(null);
   const products = useProducts();
 
@@ -18,10 +18,6 @@ const ItemDetailContainer = () => {
     return <div>Loading...</div>; 
   }
 
-  const handleAddToCart = (quantity) => {
-    console.log(`Added ${quantity} of Product ${product.id} to cart`);
-  };
-
   return (
     <Box p={4}>
       <Flex direction={['column', 'row']} align="center" justify="center">
@@ -30,7 +26,7 @@ const ItemDetailContainer = () => {
           <Heading as="h1">{product.name}</Heading>
           <Text mt={2}>{product.description}</Text>
           <Text mt={2} fontSize="2xl" color="teal.500">${product.price}</Text>
-          <ItemCount stock={product.stock} initial={1} onAdd={handleAddToCart} />
+          <ItemCount product={product} stock={product.stock} initial={1} /> 
         </Box>
       </Flex>
     </Box>

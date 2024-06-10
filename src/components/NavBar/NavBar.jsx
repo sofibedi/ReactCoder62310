@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Flex, Button, HStack } from '@chakra-ui/react';
+import CartWidget from '../CartWidget/CartWidget'; // Corregido el import
 
 const NavBar = () => {
   return (
@@ -12,6 +13,7 @@ const NavBar = () => {
           <Button as={Link} to="/category/electronica">Electrónica</Button>
           <Button as={Link} to="/category/libros">Libros</Button>
         </HStack>
+        <CartWidget />
       </Flex>
     </Box>
   );
