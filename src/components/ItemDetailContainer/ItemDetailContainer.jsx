@@ -1,36 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Box, Image, Text, Heading, Flex, Button } from '@chakra-ui/react';
-import ItemCount from '../ItemCount/ItemCount'; 
-import { useProducts } from '../ProductsContext/ProductsContext';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebaseConfig'; 
 
 const ItemDetailContainer = () => {
-  const { id } = useParams();  
   const [product, setProduct] = useState(null);
-  const products = useProducts();
+  const { itemId } = useParams();
 
   useEffect(() => {
-    const selectedProduct = products.find(p => p.id === parseInt(id));
-    setProduct(selectedProduct);
-  }, [id, products]);
+    const docRef = doc(db, 'products', itemId); 
 
-  if (!product) {
-    return <div>Loading...</div>; 
-  }
+    getDoc(docRef)
+      .then((doc) => {
+        if (doc.exists()) {
+          setProduct({ id: doc.id, ...doc.data() });
+        } else {
+          console.log('No such document!');
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching document:', error);
+      });
+  }, [itemId]); 
 
-  return (
-    <Box p={4}>
-      <Flex direction={['column', 'row']} align="center" justify="center">
-        <Image src={product.image} alt={product.name} boxSize="300px" objectFit="cover" m="auto" />
-        <Box p="6">
-          <Heading as="h1">{product.name}</Heading>
-          <Text mt={2}>{product.description}</Text>
-          <Text mt={2} fontSize="2xl" color="teal.500">${product.price}</Text>
-          <ItemCount product={product} stock={product.stock} initial={1} /> 
-        </Box>
-      </Flex>
-    </Box>
-  );
+  return product ? <ItemDetail product={product} /> : <p>Cargando...</p>;
 };
 
 export default ItemDetailContainer;

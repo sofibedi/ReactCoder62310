@@ -1,30 +1,27 @@
-// App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavBar from './components/NavBar/NavBar.jsx';
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer.jsx";
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer.jsx';
-import Cart from './components/Cart/Cart.jsx'; 
-import NotFound from './components/NotFound/NotFound.jsx';
-import { ProductsProvider } from './components/ProductsContext/ProductsContext';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import Cart from './components/Cart/Cart';
+import { CartProvider } from './context/CartContext';
 
-const App = () => {
+function App() {
   return (
-    <Router>
-      <Cart> 
-        <NavBar />
-        <ProductsProvider>
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
-            <Route path="/product/:id" element={<ItemDetailContainer />} />
-            <Route path="/category/:category" element={<ItemListContainer />} />
-            {/* <Route path="/cart" element={<Cart />} />   Removed since Cart is the provider*/}
-            <Route path="*" element={<NotFound />} />
+            <Route path="/category/:categoryId" element={<ItemListContainer />} />
+            <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
-        </ProductsProvider>
-      </Cart>
-    </Router>
+        </div>
+      </Router>
+    </CartProvider>
   );
-};
+}
 
 export default App;

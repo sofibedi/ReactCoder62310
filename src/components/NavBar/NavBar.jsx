@@ -1,21 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Flex, Button, HStack } from '@chakra-ui/react';
-import CartWidget from '../CartWidget/CartWidget'; 
+import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
   return (
-    <Box bg="teal.500" p={4} color="white">
-      <Flex justify="space-between" align="center">
-        <HStack spacing={4}>
-          <Button as={Link} to="/">Home</Button>
-          <Button as={Link} to="/category/ropa">Ropa</Button>
-          <Button as={Link} to="/category/electronica">Electrónica</Button>
-          <Button as={Link} to="/category/libros">Libros</Button>
-        </HStack>
-        <CartWidget />
-      </Flex>
-    </Box>
+    <nav className="navbar">
+      <Link to="/">Inicio</Link>
+      <Link to="/category/remeras">Remeras</Link>
+      <Link to="/category/buzos">Buzos</Link>
+      <Link to="/category/pantalones">Pantalones</Link>
+      <Link to="/category/accesorios">Accesorios</Link>
+      <CartWidget />
+    </nav>
   );
 };
 
