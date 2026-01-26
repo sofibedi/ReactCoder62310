@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/ReactCoder62310/'
+  base: '/ReactCoder62310/', // 👈 NOMBRE EXACTO DEL REPO
 })
